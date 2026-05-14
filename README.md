@@ -6,7 +6,7 @@ Project artifact for:
 
 - Original artifact URL: <https://figshare.com/s/faf2c8a24410b34b7e70>
 - Imported via `pubs2github` from the publications page
-- Downloader: `figshare` — Downloaded bulk ZIP via private-link ndownloader
+- Downloader: `figshare` — Downloaded 2 file(s) via API (article 32292927)
 
 
 ## Other papers using the same artifact
