@@ -1,0 +1,235 @@
+#include <Avance.incl>
+#include <Grad.incl>
+;;
+#define CARBON_LABEL
+
+
+define delay TAUA
+"TAUA = 2.74m - p25 - 2u"
+
+define delay TAUF
+"TAUF = 2.74m - p25 - 2u"    	        
+
+define delay TAUE
+"TAUE = 2.74m - p25 - 2u - p17"
+
+
+
+define delay TAUC
+"TAUC = 2.74m - p28 - 4u - p11"          					  
+
+define delay TAUD
+"TAUD = 2.74m - p28 - 6u - p13 - de"  
+
+
+define delay pd1
+"pd1 = p1*2"  
+
+define delay pd17
+"pd17 = p17"  												
+
+;; --------------------------------- define mixing period delays here --------------------------
+
+define delay MIX
+;"MIX = d8 - p13 - p22 - 300u - 4u"
+
+define list<delay> TMIX={0.003 0.050 0.100 0.150 0.200 0.250 0.300 0.350 0.400 0.500 0.600 0.800}
+
+"d11=5m"
+"d12=5m"
+
+;; ------------------------ nitrogen evolution first delay --------------------------------------
+
+"d0 = 2u"
+
+
+
+
+
+1 ze 
+  d11 LOCKDEC_ON
+  50u LOCKH_ON
+  d11 H2_PULSE
+2 10u
+3 d11 do:f2
+4 d11 do:f1
+  10u do:f1
+  10u do:f2
+  10u do:f3
+  10u do:f4
+
+
+
+  d11 H2_LOCK
+  d11 LOCKH_OFF
+  d1
+  d11 UNBLKGRAD
+  d11 H2_PULSE
+
+  10u pl0:f2
+  10u pl7:f3
+  10u pl17:f4
+
+#ifdef CARBON_LABEL
+  2u pl12:f2
+#else
+  2u pl0:f2
+#endif
+
+    2u
+   (p7 ph0):f3
+    2u
+    p20:gp0
+    1m
+
+  
+    2u pl1:f1
+
+;---------------- real start here ---------------------
+ 
+   (p1 ph0):f1
+    2u
+    p25:gp0
+    TAUA
+   (center (p7*2 ph0):f3 (p1*2 ph0):f1)
+    2u
+    p25:gp0
+    TAUA
+   (p1 ph1):f1
+   
+;********************************************************
+       
+    2u pl11:f1
+   (p11 ph16:r):f1
+    2u 
+    p24:gp5
+    250u pl1:f1
+
+   (p17 ph1):f4
+    2u cpd4:f4
+    
+;******************* nitrogen evolution *****************
+
+   (p7 ph2):f3
+    2u cpds2:f2
+    pd17
+    TAUE
+    d0
+   (p1*2 ph0):f1
+    d0
+    2u
+   (p7*2 ph0):f3
+    4u
+    pd1
+    TAUE
+    2u do:f2
+    2u do:f4
+   (p17 ph11):f4 
+   (ralign (p7 ph7):f3 (p1 ph0):f1)
+   
+;********************* MIXING PERIOD ********************
+  
+    2u pl13:f1
+   (p13 ph15:r):f1
+    2u
+    p22:gp5
+    
+ "MIX = TMIX - p13 - p22 - 300u - 4u"
+    MIX
+    
+    300u pl1:f1
+  
+;***************** make N anti-phase ********************   
+
+   (p7 ph0):f3   
+    2u
+    p25:gp0
+    TAUF
+   (center (p7*2 ph0):f3 (p1*2 ph0):f1)
+    2u
+    p25:gp0
+    TAUF
+   (p7 ph1):f3
+    
+    2u
+   (p1*2 ph0):f1
+    2u
+    p23:gp5
+    250u  
+
+;******************* BACK TO PROTONS ********************
+
+    2u pl11:f1
+   (p11 ph14:r):f1
+    2u pl1:f1
+
+   (p1 ph0):f1
+    2u
+    p28:gp2
+    TAUC pl11:f1
+   (p11 ph14:r):f1
+    2u pl1:f1
+   (center (p1*2 ph0):f1  (p7*2 ph0):f3) 
+    2u pl13:f1
+   (p13 ph15:r):f1
+    2u pl1:f1   
+    p28:gp2
+    TAUD pl31:f3
+    2u BLKGRAMP
+
+;********************* acquisition ***********************
+
+    go=2 ph31 cpd3:f3
+     10u do:f2
+     10u do:f3
+     10u do:f4
+    d11 wr #0 if #0 zd
+
+
+
+
+     d12 TMIX.inc
+   lo to 2 times l2
+
+     d12 ip2  
+   lo to 3 times 2
+
+     d12 id0
+     d12 ip31
+     d12 ip31
+   lo to 4 times l3
+
+
+1m  do:f1
+1m  do:f2
+1m  do:f3
+1m  do:f4
+d11 H2_LOCK
+d11 LOCKH_OFF
+d11 LOCKDEC_OFF
+1m  BLKGRAD
+exit
+
+
+
+
+
+ph0=0
+ph1=1
+ph2=0 0 2 2
+ph3=0 						
+ph4=0
+ph5=0								
+ph6=0	
+ph7=1 3						
+ph10=1
+ph11=3
+ph13=2
+ph14=2
+ph15=2
+ph16=2					 										
+ph21=1      			
+ph20=0
+ph23=0
+
+ph31=0 2 2 0
