@@ -1,0 +1,14 @@
+(devign) root@4dd4d0b94873:~/devign_vulgen# bash devign_wild_xen.sh 
+Using backend: pytorch
+[09/05/2022 - 10:21:48] File "devign_wild_xen.py", line 46  	Reading already processed data from ./devign_wild_xen/processed.bin!	
+[09/05/2022 - 10:21:57] File "devign_wild_xen.py", line 48  	22564	0	7967	
+train: 22564 10640
+test: 7967 531
+[09/05/2022 - 10:21:58] File "devign_wild_xen.py", line 79  	Total Parameters : 1148553	
+[09/05/2022 - 10:21:58] File "devign_wild_xen.py", line 80  	####################################################################################################	
+/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  return warnings.warn(message, category=category, stacklevel=1)
+/opt/conda/envs/devign/lib/python3.8/site-packages/torch/nn/functional.py:652: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool1d(input, kernel_size, stride, padding, dilation, ceil_mode)
+testing result: 46.309314586994724 8.126050724637682 53.478512241054616 14.123561754598747
+neg testing result: [46.309314586994724, 94.47887323943662, 45.11096166778749, 6106.508875739646]

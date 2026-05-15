@@ -1,0 +1,14 @@
+(devign) root@4dd4d0b94873:~/devign_vulgen# bash devign_vulgen_gth_reveal.sh 
+Using backend: pytorch
+[09/05/2022 - 10:02:36] File "devign_vulgen_gth_reveal.py", line 46  	Reading already processed data from ./devign_vulgen_gth_reveal/processed.bin!	
+[09/05/2022 - 10:02:44] File "devign_vulgen_gth_reveal.py", line 48  	22550	0	2898	
+train: 22550 10626
+test: 2898 263
+[09/05/2022 - 10:02:44] File "devign_vulgen_gth_reveal.py", line 79  	Total Parameters : 1148553	
+[09/05/2022 - 10:02:44] File "devign_vulgen_gth_reveal.py", line 80  	####################################################################################################	
+/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  return warnings.warn(message, category=category, stacklevel=1)
+/opt/conda/envs/devign/lib/python3.8/site-packages/torch/nn/functional.py:652: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool1d(input, kernel_size, stride, padding, dilation, ceil_mode)
+testing result: 45.495340006903696 10.972815533980583 47.91787072243346 17.8631030873888
+neg testing result: [45.495340006903696, 92.2337870296237, 43.735763097949885, 5933.556528457378]

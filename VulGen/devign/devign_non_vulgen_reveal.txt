@@ -1,0 +1,42 @@
+(devign) root@4dd4d0b94873:~/Devign# bash devign_non_vulgen_reveal.sh
+Using backend: pytorch
+[08/11/2022 - 10:37:25] File "/root/Devign/data_loader/dataset.py", line 53     Reading Train File!
+  0%|                                                                                          | 0/5000 [00:00<?, ?it/s]/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  return warnings.warn(message, category=category, stacklevel=1)
+/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: DGLGraph.add_edge is deprecated. Please use DGLGraph.add_edges
+  return warnings.warn(message, category=category, stacklevel=1)
+[08/11/2022 - 10:37:35] File "/root/Devign/data_loader/dataset.py", line 64     Feature Size 169
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:09<00:00, 20.02it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:08<00:00, 20.08it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:11<00:00, 19.84it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:06<00:00, 20.30it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 756/756 [00:39<00:00, 19.20it/s]
+[08/11/2022 - 10:55:24] File "/root/Devign/data_loader/dataset.py", line 79     Reading Test File!
+100%|███████████████████████████████████████████████████████████████████████████████| 2898/2898 [01:48<00:00, 26.76it/s]
+train: 20756 9744
+test: 2898 263
+[08/11/2022 - 10:57:24] File "devign_non_vulgen_reveal.py", line 79     Total Parameters : 1148553
+[08/11/2022 - 10:57:24] File "devign_non_vulgen_reveal.py", line 80     ####################################################################################################
+[08/11/2022 - 10:57:27] File "/root/Devign/trainer.py", line 175        Start Training
+/opt/conda/envs/devign/lib/python3.8/site-packages/torch/nn/functional.py:652: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool1d(input, kernel_size, stride, padding, dilation, ceil_mode)
+[08/11/2022 - 10:57:47] File "/root/Devign/trainer.py", line 216        Step 127
+[08/11/2022 - 10:57:47] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 10:58:08] File "/root/Devign/trainer.py", line 216        Step 255
+[08/11/2022 - 10:58:08] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 10:58:28] File "/root/Devign/trainer.py", line 216        Step 383
+[08/11/2022 - 10:58:28] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 10:58:49] File "/root/Devign/trainer.py", line 216        Step 511
+[08/11/2022 - 10:58:49] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 10:59:09] File "/root/Devign/trainer.py", line 216        Step 639
+[08/11/2022 - 10:59:09] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 10:59:30] File "/root/Devign/trainer.py", line 216        Step 767
+[08/11/2022 - 10:59:30] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 10:59:50] File "/root/Devign/trainer.py", line 216        Step 895
+[08/11/2022 - 10:59:50] File "/root/Devign/trainer.py", line 217        ====================================================================================================
+[08/11/2022 - 11:00:31] File "/root/Devign/trainer.py", line 235        models/devign_non_vulgen_reveal/GGNNSumModel   Test Accuracy: 68.93     Precision: 86.20        Recall: 40.26   F1: 54.89
+[08/11/2022 - 11:00:31] File "/root/Devign/trainer.py", line 236        ====================================================================================================
+/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  return warnings.warn(message, category=category, stacklevel=1)
+testing result: 71.86744908526062 10.0 26.23574144486692 14.480587618048272
+neg testing result: [71.86744908526062, 91.20978704123243, 76.42369020501138, 8316.463540590787]

@@ -1,0 +1,67 @@
+{
+    "mode": "graph2iteredit",
+    "lang": "csharp",
+    "debug": false,
+    "dataset":{
+        "train_file": "source_data/githubedits/vulgen_train_g2e_fix.jsonl",
+        "dev_file": "source_data/githubedits/vulgen_val_g2e_fix.jsonl",
+        "vocab_path": "source_data/githubedits/vocab_real_world7.json",
+        "grammar_path": "source_data/githubedits/Syntax-C.xml",
+        "prune_grammar": false,
+        "tensorization": true,
+        "num_data_load_worker": 1,
+        "filter_dataset": false
+    },
+    "controller": {
+        "hidden_size": 256
+    },
+    "embedder":{
+        "type": "syntax_tree_embedder",
+        "token_embed_size": 128,
+        "node_embed_method": "type"
+    },
+    "encoder":{
+        "token_encoding_size": 128,
+        "layer_timesteps": [5, 5],
+        "residual_connections": {"1": [0]},
+        "connections": ["top_down", "bottom_up", "next_sibling", "prev_sibling"],
+        "dropout": 0.2,
+        "use_bias_for_message_linear": true
+    },
+    "edit_encoder":{
+        "type": "treediff",
+        "edit_encoding_size": 512,
+        "input_size": 256,
+        "copy_token": true,
+        "dropout": 0.2
+    },
+    "decoder":{
+        "hidden_size": 256,
+        "dropout": 0.3,
+        "action_embed_size": 128,
+        "field_embed_size": 32,
+        "operator_embed_size": 32,
+        "copy_token": true,
+        "copy_subtree": true,
+        "local_feed_anchor_node": true,
+        "local_feed_siblings": false,
+        "local_feed_parent_node": false
+    },
+    "trainer":{
+        "batch_size": 1,
+        "clip_grad": 5.0,
+        "max_change_sequence_length": 70,
+        "max_action_sequence_length": 100,
+        "log_every": 100,
+        "max_epoch": 90,
+        "patience": 5,
+        "max_num_trial": 5,
+        "lr_decay": 0.5,
+        "reset_optimizer": false,
+        "save_each_epoch": false,
+	    "loss_avg_step": false
+    },
+    "loss":{
+        "word_predict_loss_weight": 0.0
+    }
+}

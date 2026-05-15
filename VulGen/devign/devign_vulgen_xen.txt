@@ -1,0 +1,25 @@
+(devign) root@4dd4d0b94873:~/Devign# bash devign_vulgen_xen.sh
+Using backend: pytorch
+[08/15/2022 - 11:00:01] File "/root/Devign/data_loader/dataset.py", line 53     Reading Train File!
+  0%|                                                                                          | 0/5000 [00:00<?, ?it/s]/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: Recommend creating graphs by `dgl.graph(data)` instead of `dgl.DGLGraph(data)`.
+  return warnings.warn(message, category=category, stacklevel=1)
+/opt/conda/envs/devign/lib/python3.8/site-packages/dgl/base.py:45: DGLWarning: DGLGraph.add_edge is deprecated. Please use DGLGraph.add_edges
+  return warnings.warn(message, category=category, stacklevel=1)
+[08/15/2022 - 11:00:11] File "/root/Devign/data_loader/dataset.py", line 64     Feature Size 169
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:18<00:00, 19.33it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:14<00:00, 19.64it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:17<00:00, 19.44it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [04:12<00:00, 19.81it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 756/756 [00:39<00:00, 19.00it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████| 879/879 [00:48<00:00, 18.08it/s]
+[08/15/2022 - 11:19:17] File "/root/Devign/data_loader/dataset.py", line 79     Reading Test File!
+100%|███████████████████████████████████████████████████████████████████████████████| 5000/5000 [02:00<00:00, 41.33it/s]
+100%|███████████████████████████████████████████████████████████████████████████████| 2967/2967 [01:14<00:00, 39.75it/s]
+train: 21635 10623
+test: 7967 531
+[08/15/2022 - 11:22:50] File "devign_vulgen_xen.py", line 79    Total Parameters : 1148553
+[08/15/2022 - 11:22:50] File "devign_vulgen_xen.py", line 80    ####################################################################################################
+/opt/conda/envs/devign/lib/python3.8/site-packages/torch/nn/functional.py:652: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /pytorch/c10/core/TensorImpl.h:1156.)
+  return torch.max_pool1d(input, kernel_size, stride, padding, dilation, ceil_mode)
+testing result: 57.15541049460205 8.585950920245399 51.98001883239172 14.749829973281516
+neg testing result: [57.15541049460205, 95.91324200913242, 56.5030262273033, 7111.2991959373685]

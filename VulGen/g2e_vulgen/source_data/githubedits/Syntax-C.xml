@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Tree Root="SyntaxNode">
+  <PredefinedNode Name="ASTNode" Base="SyntaxNode"/>
+  <PredefinedNode Name="SyntaxToken" Base="ASTNode"/>
+  <!--PredefinedNode Name="StructuredTriviaSyntax" Base="CSharpSyntaxNode"/-->
+  
+  <AbstractNode Name="Statement" Base="ASTNode">
+    <Field Name="Token" Type="SyntaxToken">
+      <Kind Name="Token"/>
+    </Field>
+  </AbstractNode>
+
+
+
+  <AbstractNode Name="Expression" Base="ASTNode">
+  </AbstractNode>
+
+  <Node Name="FunctionList" Base="ASTNode">
+    <Field Name="Functions" Type="SeparatedSyntaxList&lt;FunctionDef&gt;">
+    </Field>
+  </Node>
+
+  <Node Name="IdentifierDeclType" Base="ASTNode">
+    <Field Name="Decl_Type" Type="SyntaxToken">
+      <Kind Name="TypeToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="IdentifierDecl" Base="ASTNode">
+    <Field Name="IdentifierDeclType" Type="IdentifierDeclType">
+    </Field>
+    <Field Name="Expression" Type="Expression">
+    </Field>
+  </Node>
+
+  <Node Name="FunctionDef" Base="ASTNode">
+    <Field Name="ReturnType" Type="ReturnType">
+    </Field>
+    <Field Name="FunctionName" Type="SyntaxToken">
+      <Kind Name="IdentifierToken"/>
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="ParameterList" Type="ParameterList">
+    </Field>
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="Function" Type="Statement">
+    </Field>>
+
+  </Node>
+
+  <Node Name="ParameterList" Base="ASTNode">
+    <Field Name="Parameters" Type="SeparatedSyntaxList&lt;Parameter&gt;">
+    </Field>
+  </Node>
+
+  <Node Name="Parameter" Base="ASTNode">
+    <Field Name="ParameterType" Type="ParameterType">
+    </Field>
+    <Field Name="Identifier" Type="Identifier">
+    </Field>
+  </Node>
+
+  <Node Name="ParameterType" Base="ASTNode">
+    <Field Name="Parameter_Type" Type="SyntaxToken">
+      <Kind Name="TypeToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="ReturnType" Base="ASTNode">
+    <Field Name="Type" Type="SeparatedSyntaxList&lt;SyntaxToken&gt;">
+      <Kind Name="TypeToken"/>
+    </Field>
+  </Node>
+
+  <AbstractNode Name="JumpStatement" Base="Statement">
+  </AbstractNode>
+
+  <AbstractNode Name="BlockStarter" Base="Statement">
+  </AbstractNode>
+
+  <AbstractNode Name="ExpressionHolderStatement" Base="Statement">
+  </AbstractNode>
+
+  <Node Name="IdentifierDeclStatement" Base="Statement">
+    <Field Name="IdentifierDecl" Type="IdentifierDecl">
+    </Field>
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="CompoundStatement" Base="Statement">
+    <Field Name="OpenBraceToken" Type="SyntaxToken">
+      <Kind Name="OpenBraceToken"/>
+    </Field>
+    <Field Name="Statements" Type="SeparatedSyntaxList&lt;Statement&gt;">
+    </Field>
+    <Field Name="CloseBraceToken" Type="SyntaxToken">
+      <Kind Name="CloseBraceToken"/>
+    </Field>
+  </Node>
+
+
+  <Node Name="Label" Base="Statement">
+    <Field Name="Identifier" Type="Identifier">
+    </Field>
+    <Field Name="ColonToken" Type="SyntaxToken">
+      <Kind Name="ColonToken"/>
+    </Field>
+  </Node>
+
+  <AbstractNode Name="ExpressionHolder" Base="Expression">
+  </AbstractNode>
+
+  <Node Name="UnaryOperator" Base="Expression">
+    <Field Name="UnaryOperatorToken" Type="SyntaxToken">
+      <Kind Name="UnaryOperatorToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="UnaryOp" Base="Expression">
+    <Field Name="UnaryOperator" Type="UnaryOperator">
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="Expression" Type="Expression">
+    </Field>
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="UnaryExpression" Base="Expression">
+    <Field Name="IncDec" Type="IncDec">
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="Expression" Type="Expression">
+    </Field>
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+
+  <AbstractNode Name="PostfixExpression" Base="Expression">
+  </AbstractNode>
+
+  <Node Name="ConditionalExpression" Base="Expression">
+    <Field Name="ConditionOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="Condition" Type="Condition">
+    </Field>
+    <Field Name="ConditionCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="QuestionToken" Type="SyntaxToken">
+      <Kind Name="QuestionToken">
+    </Field>
+    <Field Name="TrueOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="TrueExpression" Type="Expression">
+    </Field>
+    <Field Name="TrueCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="ColonToken" Type="SyntaxToken">
+      <Kind Name="ColonToken"/>
+    </Field>
+    <Field Name="FalseOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="FalseExpression" Type="Expression"/>
+    </Field>
+    <Field Name="FalseCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+
+  <AbstractNode Name="BinaryExpression" Base="Expression">
+  </AbstractNode>
+
+  <Node Name="ArrayIndexing" Base="Expression">
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="OpenBracketToken" Type="SyntaxToken">
+      <Kind Name="OpenBracketToken"/>
+    </Field>    
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="CloseBracketToken" Type="SyntaxToken">
+      <Kind Name="CloseBracketToken"/>
+    </Field>    
+  </Node>
+
+  <Node Name="CastExpression" Base="Expression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="CastTarget" Type="CastTarget">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="Expression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>  
+  </Node>
+
+  <Node Name="CastTarget" Base="Expression">
+    <Field Name="CastTargetTokens" Type="SeparatedSyntaxList&lt;SyntaxToken&gt;">
+      <Kind Name="CastTargetToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="Identifier" Base="Expression">
+    <Field Name="IdentifierTokens" Type="SeparatedSyntaxList&lt;SyntaxToken&gt;">
+      <Kind Name="IdentifierToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="IncDec" Base="Expression">
+    <Field Name="IncDecToken" Type="SyntaxToken">
+      <Kind Name="IncDecToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="Sizeof" Base="Expression">
+    <Field Name="SizeofToken" Type="SyntaxToken">
+      <Kind Name="SizeofToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="SizeofExpr" Base="Expression">
+    <Field Name="SizeofToken" Type="SyntaxToken">
+      <Kind Name="SizeofToken"/>
+    </Field>
+
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="SizeofOperand" Type="Expression">
+    </Field>
+
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="SizeofOperand" Base="Expression">
+    <Field Name="SizeofOperandToken" Type="SyntaxToken">
+      <Kind Name="SizeofOperandToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="ForInit" Base="Expression">
+    <Field Name="Expression" Type="Expression">
+    </Field>
+  </Node>
+
+  <Node Name="ReturnStatement" Base="JumpStatement">
+    <Field Name="ReturnToken" Type="SyntaxToken">
+      <Kind Name="ReturnToken"/>
+    </Field>
+    <Field Name="Expression" Type="Expression">
+    </Field>
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="GotoStatement" Base="JumpStatement">
+    <Field Name="GotoToken" Type="SyntaxToken">
+      <Kind Name="GotoToken"/>
+    </Field>
+    <Field Name="Identifier" Type="Identifier">
+    </Field>
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="ContinueStatement" Base="JumpStatement">
+    <Field Name="ContinueToken" Type="SyntaxToken">
+      <Kind Name="ContinueToken"/>
+    </Field>
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="BreakStatement" Base="JumpStatement">
+    <Field Name="BreakToken" Type="SyntaxToken">
+      <Kind Name="BreakToken"/>
+    </Field>
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="WhileStatement" Base="BlockStarter">
+    <Field Name="WhileToken" Type="SyntaxToken">
+      <Kind Name="WhileToken"/>
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="Condition" Type="Condition">
+    </Field>
+
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+
+    <Field Name="Statement" Type="Statement">
+    </Field>
+  </Node>
+
+  <Node Name="SwitchStatement" Base="BlockStarter">
+    <Field Name="SwitchToken" Type="SyntaxToken">
+      <Kind Name="SwitchToken"/>
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="Condition" Type="Condition">
+    </Field>
+
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+
+    <Field Name="Statement" Type="Statement">
+    </Field>
+  </Node>
+
+  <Node Name="IfStatement" Base="BlockStarter">
+    <Field Name="IfToken" Type="SyntaxToken">
+      <Kind Name="IfToken"/>
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="Condition" Type="Condition">
+    </Field>
+
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+
+    <Field Name="Statement" Type="Statement">
+    </Field>
+
+    <Field Name="ElseStatement" Type="ElseStatement" Optional="true">
+    </Field>
+  </Node>
+
+  <Node Name="ForStatement" Base="BlockStarter">
+    <Field Name="ForToken" Type="SyntaxToken">
+      <Kind Name="ForToken"/>
+    </Field>
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="ForInit" Type="ForInit">
+    </Field>
+
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+
+    <Field Name="Condition" Type="Condition">
+    </Field>
+
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+
+    <Field Name="Expression" Type="Expression">
+    </Field>
+
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+
+    <Field Name="Statement" Type="Statement">
+    </Field>
+  </Node>
+
+  <Node Name="ElseStatement" Base="BlockStarter">
+    <Field Name="ElseToken" Type="SyntaxToken">
+      <Kind Name="ElseToken"/>
+    </Field>
+
+    <Field Name="Statement" Type="Statement">
+    </Field>
+  </Node>
+
+  <Node Name="DoStatement" Base="BlockStarter">
+    <Field Name="DoToken" Type="SyntaxToken">
+      <Kind Name="DoToken"/>
+    </Field>
+
+    <Field Name="Statement" Type="Statement">
+    </Field>
+
+    <Field Name="WhileToken" Type="SyntaxToken">
+      <Kind Name="WhileToken"/>
+    </Field>
+
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="Condition" Type="Condition">
+    </Field>
+
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+
+  </Node>
+
+  <Node Name="ExpressionStatement" Base="ExpressionHolderStatement">
+    <Field Name="Expression" Type="Expression">
+    </Field>
+
+    <Field Name="SemicolonToken" Type="SyntaxToken">
+      <Kind Name="SemicolonToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="Condition" Base="ExpressionHolder">
+    <Field Name="Expression" Type="Expression">
+    </Field>
+  </Node>
+
+  <Node Name="InitializerList" Base="ExpressionHolder">
+    <Field Name="OpenBraceToken" Type="SyntaxToken">
+      <Kind Name="OpenBraceToken"/>
+    </Field>
+    <Field Name="InitExpressions" Type="SeparatedSyntaxList&lt;Expression&gt;">
+    </Field>
+    <Field Name="CloseBraceToken" Type="SyntaxToken">
+      <Kind Name="CloseBraceToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="Callee" Base="ExpressionHolder">
+    <Field Name="Expression" Type="Expression">
+    </Field>
+  </Node>
+
+  <Node Name="Argument" Base="ExpressionHolder">
+    <Field Name="Expression" Type="Expression">
+    </Field>
+  </Node>
+
+  <Node Name="ArgumentList" Base="ExpressionHolder">
+    <Field Name="Arguments" Type="SeparatedSyntaxList&lt;Argument&gt;">
+    </Field>
+  </Node>
+
+  <Node Name="PtrMemberAccess" Base="PostfixExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="PointtoToken" Type="SyntaxToken">
+      <Kind Name="PointtoToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="PrimaryExpression" Base="PostfixExpression">
+    <Field Name="PrimaryToken" Type="SyntaxToken">
+      <Kind Name="PrimaryToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="CallExpression" Base="PostfixExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="Callee" Type="Callee">
+    </Field>
+
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+
+    <Field Name="ArgumentList" Type="ArgumentList">
+    </Field>
+
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="IncDecOp" Base="PostfixExpression">
+    <Field Name="OpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="Expression" Type="Expression">
+    </Field>
+    <Field Name="CloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="IncDec" Type="IncDec">
+    </Field>
+  </Node>
+
+  <Node Name="MemberAccess" Base="PostfixExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="DotToken" Type="SyntaxToken">
+      <Kind Name="DotToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="MultiplicativeExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="MultipleToken" Type="SyntaxToken">
+      <Kind Name="MultipleToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="EqualityExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="EqualityToken" Type="SyntaxToken">
+      <Kind Name="EqualityToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="AssignmentExpr" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="AssignmentToken" Type="SyntaxToken">
+      <Kind Name="AssignmentToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="AdditiveExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="AdditiveToken" Type="SyntaxToken">
+      <Kind Name="AdditiveToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="AndExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="AndToken" Type="SyntaxToken">
+      <Kind Name="AndToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="BitAndExpr" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="BitAndToken" Type="SyntaxToken">
+      <Kind Name="BitAndToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="ExclusiveOrExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="ExclusiveOrToken" Type="SyntaxToken">
+      <Kind Name="ExclusiveOrToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="InclusiveOrExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="InclusiveOrToken" Type="SyntaxToken">
+      <Kind Name="InclusiveOrToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="OrExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="OrToken" Type="SyntaxToken">
+      <Kind Name="OrToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="RelationalExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="RelationalToken" Type="SyntaxToken">
+      <Kind Name="RelationalToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+
+  <Node Name="ShiftExpression" Base="BinaryExpression">
+    <Field Name="LeftOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="LeftExpression" Type="Expression">
+    </Field>
+    <Field Name="LeftCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+    <Field Name="ShiftToken" Type="SyntaxToken">
+      <Kind Name="ShiftToken"/>
+    </Field>
+    <Field Name="RightOpenParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="OpenParenthesisToken"/>
+    </Field>
+    <Field Name="RightExpression" Type="Expression">
+    </Field>
+    <Field Name="RightCloseParenthesisToken" Type="SyntaxToken" Optional="true">
+      <Kind Name="CloseParenthesisToken"/>
+    </Field>
+  </Node>
+</Tree>
