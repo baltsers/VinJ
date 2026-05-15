@@ -21,10 +21,27 @@
 The artifact contains 329 file(s) including Python, Shell scripts, Config files, Data files, and Documentation.
 
 ```
-├── VulGen
-│   ├── devign
+├── devign
+│   ├── __pycache__
+│   │   ├── trainer.cpython-38.pyc
+│   │   └── utils.cpython-38.pyc
+│   ├── data_loader
 │   │   ├── __pycache__
-│   │   ├── data_loader
+│   │   ├── __init__.py
+│   │   ├── batch_graph.py
+│   │   └── dataset.py
+│   ├── devign_non_vulgen_reveal
+│   ├── devign_non_vulgen_xen
+│   ├── devign_vulgen_gth_reveal
+│   ├── devign_vulgen_gth_xen
+│   ├── devign_vulgen_reveal
+│   ├── devign_vulgen_syn_reveal
+│   ├── devign_vulgen_syn_xen
+│   ├── devign_vulgen_xen
+│   ├── devign_wild_reveal
+│   ├── devign_wild_xen
+│   ├── models
+│   │   ├── demo
 │   │   ├── devign_non_vulgen_reveal
 │   │   ├── devign_non_vulgen_xen
 │   │   ├── devign_vulgen_gth_reveal
@@ -34,56 +51,38 @@ The artifact contains 329 file(s) including Python, Shell scripts, Config files,
 │   │   ├── devign_vulgen_syn_xen
 │   │   ├── devign_vulgen_xen
 │   │   ├── devign_wild_reveal
-│   │   ├── devign_wild_xen
-│   │   ├── models
-│   │   ├── modules
-│   │   ├── devign_non_vulgen_reveal.py
-│   │   ├── devign_non_vulgen_reveal.sh
-│   │   ├── devign_non_vulgen_reveal.txt
-│   │   ├── devign_non_vulgen_xen.py
-│   │   ├── devign_non_vulgen_xen.sh
-│   │   ├── devign_non_vulgen_xen.txt
-│   │   ├── devign_vulgen_gth_reveal.py
-│   │   ├── devign_vulgen_gth_reveal.sh
-│   │   ├── devign_vulgen_gth_reveal.txt
-│   │   ├── devign_vulgen_gth_xen.py
-│   │   ├── devign_vulgen_gth_xen.sh
-│   │   ├── devign_vulgen_gth_xen.txt
-│   │   ├── devign_vulgen_reveal.py
-│   │   ├── devign_vulgen_reveal.sh
-│   │   ├── devign_vulgen_reveal.txt
-│   │   ├── devign_vulgen_syn_reveal.py
-│   │   ├── devign_vulgen_syn_reveal.sh
-│   │   ├── devign_vulgen_syn_reveal.txt
-│   │   ├── devign_vulgen_syn_xen.py
-│   │   ├── devign_vulgen_syn_xen.sh
-│   │   ├── devign_vulgen_syn_xen.txt
-│   │   ├── devign_vulgen_xen.py
-│   │   ├── devign_vulgen_xen.sh
-│   │   ├── devign_vulgen_xen.txt
-│   │   ├── devign_wild_reveal.py
-│   │   ├── devign_wild_reveal.sh
-│   │   ├── devign_wild_reveal.txt
-│   │   ├── devign_wild_xen.py
-│   │   ├── devign_wild_xen.sh
-│   │   ├── devign_wild_xen.txt
-│   │   ├── LICENSE
-│   │   ├── README.md
-│   │   ├── trainer.py
-│   │   └── utils.py
-│   ├── g2e_vulgen
+│   │   └── devign_wild_xen
+│   ├── modules
 │   │   ├── __pycache__
-│   │   ├── asdl
-│   │   ├── common
-│   │   ├── datasets
-│   │   ├── edit_components
-│   │   ├── edit_model
-│   │   ├── scripts
-│   │   ├── source_data
-│   │   ├── trees
-│   │   … (159 more items)
-│   … (428 more items)
-… (431 more items)
+│   │   ├── __init__.py
+│   │   └── model.py
+│   ├── devign_non_vulgen_reveal.py
+│   ├── devign_non_vulgen_reveal.sh
+│   ├── devign_non_vulgen_reveal.txt
+│   ├── devign_non_vulgen_xen.py
+│   ├── devign_non_vulgen_xen.sh
+│   ├── devign_non_vulgen_xen.txt
+│   ├── devign_vulgen_gth_reveal.py
+│   ├── devign_vulgen_gth_reveal.sh
+│   ├── devign_vulgen_gth_reveal.txt
+│   ├── devign_vulgen_gth_xen.py
+│   ├── devign_vulgen_gth_xen.sh
+│   ├── devign_vulgen_gth_xen.txt
+│   ├── devign_vulgen_reveal.py
+│   ├── devign_vulgen_reveal.sh
+│   ├── devign_vulgen_reveal.txt
+│   ├── devign_vulgen_syn_reveal.py
+│   ├── devign_vulgen_syn_reveal.sh
+│   ├── devign_vulgen_syn_reveal.txt
+│   ├── devign_vulgen_syn_xen.py
+│   ├── devign_vulgen_syn_xen.sh
+│   ├── devign_vulgen_syn_xen.txt
+│   ├── devign_vulgen_xen.py
+│   ├── devign_vulgen_xen.sh
+│   ├── devign_vulgen_xen.txt
+│   ├── devign_wild_reveal.py
+│   … (73 more items)
+… (430 more items)
 ```
 
 ---
